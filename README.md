@@ -1,4 +1,4 @@
-![alt text](image.png)
+![app](image-1.png)
 
 # Software Requirements Specification for ClearSkies
 
