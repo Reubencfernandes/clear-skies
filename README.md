@@ -1,6 +1,4 @@
-Certainly! Here's a refined version of the Software Requirements Specification (SRS) for your ClearSkies weather website project. This version is crafted to provide a clearer and more professional presentation of the requirements.
-
----
+![alt text](image.png)
 
 # Software Requirements Specification for ClearSkies
 
