@@ -2,12 +2,13 @@ const mongoose = require('mongoose')
 const LocationData = require('./Database/Information')
 const express = require("express")
 const path = require('node:path')
+const dotenv = require("dotenv")
 require('colors')
 const app = express();
 const PORT = 80
 
 const url =
-  "mongodb+srv://reubencf:123@reodiscord.v5huydu.mongodb.net/reo?retryWrites=true&w=majority";
+  `mongodb+srv://${process.env.MONGO}.v5huydu.mongodb.net/reo?retryWrites=true&w=majority`;
 mongoose
   .connect(url)
   .then((ans) => {
