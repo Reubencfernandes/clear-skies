@@ -8,7 +8,7 @@ const app = express();
 const PORT = 80
 
 const url =
-  `mongodb+srv://${process.env.MONGO}.v5huydu.mongodb.net/reo?retryWrites=true&w=majority`;
+  `mongodb+srv://${process.env.MONGO}.v5huydu.mongodb.net/${process.env.DATABASE}?retryWrites=true&w=majority`;
 mongoose
   .connect(url)
   .then((ans) => {
