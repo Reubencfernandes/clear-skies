@@ -2,7 +2,7 @@ import React from 'react'
 
 const Air = () => {
   return (
-    <div>
+    <div className='bg-air'>
         <p>Air Quality</p>
         <p>AQI</p>
         <h1>784</h1>
@@ -18,8 +18,8 @@ const Air = () => {
                     Hazard
                 </div>
             </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-                <div class="bg-blue-600 h-2.5 rounded-full" style="width: 45%">
+            <div className="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="bg-blue-600 h-2.5 rounded-full w-8">
                 </div>
             </div>
         </div>

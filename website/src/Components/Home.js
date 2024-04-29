@@ -1,6 +1,5 @@
 import React from 'react'
 import Search from './Search'
-
 const Home = () => {
   return (
     <div className="flex items-center justify-between">
@@ -11,7 +10,7 @@ const Home = () => {
             <p className='font-body py-1 text-base text-gray-600'>Recent Searches: </p>
         </div>
         <div className='m-5'>
-           <img src='https://cdn.midjourney.com/8a583123-8c84-4b1a-92f2-4a57c3517da1/0_0.webp' alt='japan'/>
+           <img src='../Images/home.png' alt='japan'/>
         </div>
     </div>
   )

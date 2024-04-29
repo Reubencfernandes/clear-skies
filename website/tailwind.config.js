@@ -12,6 +12,12 @@ module.exports = {
     extend: {
       spacing:{
         '500':'31.2rem'
+      },
+      backgroundImage:{
+        'air':"url('./Images/airquality.png')"
+      },
+      colors:{
+        'lb':"#1E1E1E"
       }
     },
   },

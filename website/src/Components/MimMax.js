@@ -1,5 +1,5 @@
 import React from 'react'
-
+// shows the minimum temp and max temp
 const MimMax = () => {
   return (
     <div>

@@ -1,5 +1,5 @@
 import React from 'react'
-
+// For Navbar
 const Navbar = () => {
   return (
     <div className='bg-black p-8'>
