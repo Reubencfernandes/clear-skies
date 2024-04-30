@@ -10,7 +10,7 @@ const Home = () => {
             <p className='font-body py-1 text-base text-gray-600'>Recent Searches: </p>
         </div>
         <div className='m-5'>
-           <img src='../Images/home.png' alt='japan'/>
+         <img src='https://cdn.midjourney.com/8a583123-8c84-4b1a-92f2-4a57c3517da1/0_0.png' alt='main'/>
         </div>
     </div>
   )

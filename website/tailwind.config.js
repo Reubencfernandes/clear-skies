@@ -14,7 +14,8 @@ module.exports = {
         '500':'31.2rem'
       },
       backgroundImage:{
-        'air':"url('./Images/airquality.png')"
+        'air':"url('./Images/airquality.png')",
+        'hm':"url('./Images/home.jpg')"
       },
       colors:{
         'lb':"#1E1E1E"
