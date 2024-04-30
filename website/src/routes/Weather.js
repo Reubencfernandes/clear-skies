@@ -12,14 +12,22 @@ const Weather = () => {
   return (
     <div>
       <Navbar/>
+      <div className='grid grid-cols-2'>
+      <div>
       <CurrentWeather/>
+      </div>  
+      <div>
       <Air/>
+      </div>
+      <div>
       <MinMax/>
       <Sunrisesunset/>
+      </div>
+      <div>
       <Info/>
-      <div style={{ width: '100%', height: '500px' }}> {/* Ensure the container has height */}
+      </div>
+      </div>
       <Chart />
-    </div>
         <Forecast/>
     <Location/>
     </div>

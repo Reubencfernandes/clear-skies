@@ -6,11 +6,11 @@ const Location = () => {
     <div>
       <h1 className='font-body text-3xl font-semibold ml-3'>Most Searched Location</h1>
     </div>
-    <div>
-    <div className='border border-[#878787] rounded-xl text-black bg-location  m-3 p-3'>
+    <div className='flex'>
+    <div className='border border-[#878787] rounded-xl text-black bg-location  m-3 p-8'>
       <div className='flex justify-between'>
       <h1 className='font-bebas text-3xl'>Tokyo</h1>
-      <Flag country='JP'/>
+      <Flag className='ml-5' country='JP'/>
       </div>
       <h1 className='font-bebas text-3xl'>11°C</h1>
       <p className='font-body font-semibold'>Cloudy</p>

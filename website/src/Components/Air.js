@@ -3,7 +3,7 @@ import 'weather-react-icons/lib/css/weather-icons.css';
 import { WeatherIcon } from 'weather-react-icons'
 const Air = () => {
     return (
-        <div className='bg-air text-white rounded-3xl bg-cover m-4 font-body p-3'>
+        <div className='bg-air bg-center bg-no-repeat text-white rounded-3xl bg-cover m-4 font-body p-3'>
              <div className='flex p-1'>
                     <WeatherIcon className='text-3xl wi-cloudy-gusts' iconId={200} name="owm"/>
                     <p className='mt-2 pl-1'>Air Quality</p>
@@ -17,7 +17,7 @@ const Air = () => {
                     <div><p>Hazard</p></div>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2.5 ">
-                    <div className="bg-[#DA683A] h-2.5 rounded-full w-8">
+                    <div className="bg-[#DA683A] h-2.5 rounded-full w-80">
                     </div>
                 </div>
             </div>

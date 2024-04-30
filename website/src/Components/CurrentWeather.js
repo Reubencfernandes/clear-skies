@@ -4,7 +4,7 @@ import { WeatherIcon } from 'weather-react-icons'
 import Flag from 'react-flagkit';
 const CurrentWeather = () => {
     return (
-        <div className='bg-hm text-white rounded-3xl bg-contain m-4 font-body'>
+        <div className='bg-hm text-white rounded-3xl bg-cover bg-center bg-no-repeat m-4 font-body'>
             <div className='flex justify-between p-5'>
                 <div className='flex'>
                     <WeatherIcon className='text-3xl wi-thermometer-exterior' iconId={200} name="owm" />

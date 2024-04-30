@@ -1,54 +1,20 @@
 import React, { PureComponent } from 'react'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
+  { name: '6 AM', temperature: 20 },
+  { name: '9 AM', temperature: 22 },
+  { name: '12 PM', temperature: 35 },
+  { name: '3 PM', temperature: 30 },
+  { name: '6 PM', temperature: 25 },
+  { name: '9 PM', temperature: 22 },
+  { name: '12 AM', temperature: 20 },
 ];
 const Chart = () => {
   return (
-    <div className='border rounded-3xl font-body m-4 p-5'>
-      <h1 className='font-bebas'>FORECAST TODAY</h1>
-    <ResponsiveContainer width="100%" height="100%">
+    <div className='border rounded-xl font-body m-4 p-5 border-[#878787]'>
+      <h1 className='font-bebas text-3xl'>FORECAST TODAY</h1>
+    <ResponsiveContainer
+    height={300}>
     <AreaChart
       width={500}
       height={400}
@@ -60,10 +26,9 @@ const Chart = () => {
         bottom: 0,
       }}
     >
-      <XAxis dataKey="name" />
-      <YAxis />
+      <XAxis  axisLine={false} tickLine={false} dataKey="name" className='font-bold text-body text-black ' />
       <Tooltip />
-      <Area type="monotone" dataKey="uv" stroke="#B04043" fill="rgba(197, 46, 46, 0.19)" strokeWidth={3} />
+      <Area type="monotone" dataKey="temperature" stroke="#B04043" fill="rgba(197, 46, 46, 0.19)" strokeWidth={3} />
     </AreaChart>
   </ResponsiveContainer>
   </div>
