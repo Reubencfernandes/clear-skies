@@ -2,7 +2,7 @@ import React from 'react'
 
 const Sunrisesunset = () => {
   return (
-    <div className='rounded-3xl m-4 font-body p-4 border'>
+    <div className='rounded-3xl m-4 font-body p-4 border border-[#9C9191]'>
        <div className='flex text-black font-semibold justify-between'>
            <div> <p>Sunrise</p><p>5:00AM</p></div>
            <div> <p>Sunset</p><p>7:00PM</p></div>

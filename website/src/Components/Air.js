@@ -4,14 +4,14 @@ import { WeatherIcon } from 'weather-react-icons'
 const Air = () => {
     return (
         <div className='bg-air text-white rounded-3xl bg-cover m-4 font-body p-3'>
-             <div className='flex'>
-                    <WeatherIcon iconId={200} name="owm" className='p-3'/>
-                    <p className='mt-2'>Air Quality</p>
+             <div className='flex p-1'>
+                    <WeatherIcon className='text-3xl wi-cloudy-gusts' iconId={200} name="owm"/>
+                    <p className='mt-2 pl-1'>Air Quality</p>
                 </div>
             <p className='ml-10 font-semibold'>AQI</p>
-            <h1 className='font-bebas text-6xl ml-10'>78</h1>
+            <h1 className='font-bebas text-6xl ml-9'>78</h1>
             <div className='bg-white rounded-3xl m-5 p-6'>
-                <div className='flex text-black justify-between'>
+                <div className='flex text-black justify-between font-semibold'>
                     <div><p>Good</p></div>
                     <div><p>Moderate</p></div>
                     <div><p>Hazard</p></div>

@@ -12,7 +12,7 @@ const Forecast = () => {
         <div className='border border-[#878787] rounded-xl text-black m-3 p-3'>
           <div className='flex'>
             <div>
-            <WeatherIcon iconId={200} name="owm" className='p-3 text-4xl text-[#DA683A]' />
+            <WeatherIcon className='p-3 text-[#DA683A] text-3xl' iconId={200} name="owm" />
             </div>
             <div>
               <h1 className='font-bebas text-3xl'>MAY 21</h1>
