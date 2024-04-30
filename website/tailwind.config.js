@@ -18,7 +18,8 @@ module.exports = {
         'hm':"url('./Images/home.jpg')"
       },
       colors:{
-        'lb':"#1E1E1E"
+        'lb':"#1E1E1E",
+        'location':"rgba(217, 217, 217, 0.53)"
       }
     },
   },

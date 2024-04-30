@@ -46,6 +46,8 @@ const data = [
 ];
 const Chart = () => {
   return (
+    <div className='border rounded-3xl font-body m-4 p-5'>
+      <h1 className='font-bebas'>FORECAST TODAY</h1>
     <ResponsiveContainer width="100%" height="100%">
     <AreaChart
       width={500}
@@ -64,6 +66,7 @@ const Chart = () => {
       <Area type="monotone" dataKey="uv" stroke="#B04043" fill="rgba(197, 46, 46, 0.19)" strokeWidth={3} />
     </AreaChart>
   </ResponsiveContainer>
+  </div>
   )
 }
 
