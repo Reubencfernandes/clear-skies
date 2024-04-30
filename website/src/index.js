@@ -16,7 +16,7 @@ const router = createBrowserRouter([
   errorElement:<Error/>
 },
 {
-  path:"search/:location",
+  path:"search/:lat/:long",
   element:<Weather/>
 }
 ])

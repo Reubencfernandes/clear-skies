@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {useParams } from "react-router-dom";
 import Air from '../Components/Air'
 import MinMax from '../Components/MimMax'
 import Location from '../Components/Location'
@@ -8,7 +9,13 @@ import Navbar from '../Components/Navbar'
 import Sunrisesunset from '../Components/Sunrisesunset'
 import Info from '../Components/Info'
 import Forecast from '../Components/Forecast'
+
 const Weather = () => {
+  let {lat , lon} = useParams();
+  useEffect(() => {
+    console.log(lat,lon)
+  }, [])
+  
   return (
     <div>
       <Navbar/>

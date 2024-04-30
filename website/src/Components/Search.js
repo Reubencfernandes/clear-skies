@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 const Search = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState("");
 
   const handleChange = (e) => {
@@ -12,8 +15,8 @@ const Search = () => {
     fetch(`http://localhost:10/Get/${form}`)  
     .then(response => response.json()) 
     .then(data => {
-       console.log(data);
-      
+       console.log(data[0].lat,data[0].lon);
+      navigate(`/search/${data[0].lat}/${data[0].lon}`)
     })
     .catch(error => {
       console.error("Error fetching locations:", error);
