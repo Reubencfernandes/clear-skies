@@ -1,7 +1,7 @@
 import React from 'react'
 import 'weather-react-icons/lib/css/weather-icons.css';
 import { WeatherIcon } from 'weather-react-icons'
-const Air = () => {
+const Air = (props) => {
     return (
         <div className='bg-air bg-center bg-no-repeat text-white rounded-3xl bg-cover m-4 font-body p-3'>
              <div className='flex p-1'>
@@ -9,7 +9,7 @@ const Air = () => {
                     <p className='mt-2 pl-1'>Air Quality</p>
                 </div>
             <p className='ml-10 font-semibold'>AQI</p>
-            <h1 className='font-bebas text-6xl ml-9'>78</h1>
+            <h1 className='font-bebas text-6xl ml-9'>{props.AQI}</h1>
             <div className='bg-white rounded-3xl m-5 p-6'>
                 <div className='flex text-black justify-between font-semibold'>
                     <div><p>Good</p></div>
@@ -17,7 +17,7 @@ const Air = () => {
                     <div><p>Hazard</p></div>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2.5 ">
-                    <div className="bg-[#DA683A] h-2.5 rounded-full w-100">
+                <div className={`bg-[#DA683A] h-2.5 rounded-full w-${props.AQI}`}>
                     </div>
                 </div>
             </div>

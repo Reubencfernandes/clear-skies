@@ -9,6 +9,7 @@ import {
 } from "react-router-dom"
 import App from './routes/Main';
 import reportWebVitals from './reportWebVitals';
+import Notfound from './routes/Notfound';
 const router = createBrowserRouter([
 {
   path:"/",
@@ -16,9 +17,13 @@ const router = createBrowserRouter([
   errorElement:<Error/>
 },
 {
-  path:"search/:lat/:long",
+  path:"search/:lat/:lon/:name",
   element:<Weather/>
+},{
+path:"/NOTFOUND",
+element:<Notfound/>
 }
+
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

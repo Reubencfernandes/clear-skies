@@ -21,16 +21,33 @@ mongoose
   app.use(cors());
 app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`.red))
 app.get("/GetLocations", (req, res) => {
-  LocationData.find({}).sort({Count : -1}).then((list) => {
+  LocationData.find({}).sort({_id : -1}).then((list) => {
     res.json(list)
     console.log(list[0])
   })
 })
-app.get("/UpdateCount/:name", async (req, res) => {
+app.get("/find/:lat/:lon", (req, res) => {
+  fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${req.params.lat}&lon=${req.params.lon}&appid=${process.env.KEY}`)
+      .then(response => response.json()).then(info => {
+          res.json(info);
+      })
+      .catch(error => res.status(500).json({ error: "Error fetching data" }));  // Added error handling
+});
+app.get("/air/:lat/:lon", (req, res) => {
+  fetch(`http://api.openweathermap.org/data/2.5/air_pollution?lat=${req.params.lat}&lon=${req.params.lon}&appid=${process.env.KEY}`)
+      .then(response => response.json()).then(info => {
+          res.json(info);
+      })
+      .catch(error => res.status(500).json({ error: "Error fetching data" }));  // Added error handling
+});
+
+app.get("/UpdateCount/:name/:lat/:lon", async (req, res) => {
   const { name } = req.params;
   try {
     const result = await LocationData.findOneAndUpdate(
       { Name: name },
+      {lat:lat},
+      {lon:lon},
       { $inc: { Count: 1 } },
       { new: true, upsert: true }
     );
@@ -45,14 +62,8 @@ app.get("/UpdateCount/:name", async (req, res) => {
 });
 
 app.get("/Get/:id",(req,res)=>{
-  console.log(process.env.KEY)
 fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${req.params.id}&appid=${process.env.KEY}`).then((list) => list.json()).then(data => {
-console.log(data)
-if(data.length !=0)
-res.json(data)
-else 
-  res.status(404).json({ error: 1, message: "Location not found" });
-
+  res.json(data)
 })
 
 

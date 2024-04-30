@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Route,useNavigate } from 'react-router-dom';
 
 const Search = () => {
   const navigate = useNavigate();
@@ -13,10 +13,20 @@ const Search = () => {
     e.preventDefault();
     console.log(form); 
     fetch(`http://localhost:10/Get/${form}`)  
-    .then(response => response.json()) 
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
     .then(data => {
-       console.log(data[0].lat,data[0].lon);
-      navigate(`/search/${data[0].lat}/${data[0].lon}`)
+      if (data[0] && data[0].lat && data[0].lon) {
+        console.log(data[0]);
+        fetch(`http://localhost:10/UpdateCount/${data[0].name}/${data[0].lat}/${data[0].lon}`)
+        navigate(`/search/${data[0].lat}/${data[0].lon}/${data[0].name}`);
+      } else {
+        navigate('/NOTFOUND');
+      }
     })
     .catch(error => {
       console.error("Error fetching locations:", error);
