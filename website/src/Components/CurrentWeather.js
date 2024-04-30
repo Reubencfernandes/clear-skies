@@ -24,7 +24,7 @@ const CurrentWeather = () => {
             <h1 className='font-bebas'>10°C</h1>
             <p>Broken Clouds</p>
             </div>
-        </div>
+        </div> 
     )
 }
 

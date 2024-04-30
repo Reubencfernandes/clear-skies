@@ -1,9 +1,9 @@
 import React from 'react'
 // Current Weather Details
-const Now = () => {
+const Forecast = () => {
   return (
-    <div>Now</div>
+    <div>Forecast</div>
   )
 }
 
-export default Now
+export default Forecast
