@@ -17,7 +17,7 @@ const Air = () => {
                     <div><p>Hazard</p></div>
                 </div>
                 <div className="w-full bg-gray-200 rounded-full h-2.5 ">
-                    <div className="bg-[#DA683A] h-2.5 rounded-full w-80">
+                    <div className="bg-[#DA683A] h-2.5 rounded-full w-100">
                     </div>
                 </div>
             </div>

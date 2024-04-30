@@ -12,7 +12,7 @@ const Weather = () => {
   return (
     <div>
       <Navbar/>
-      <div className='grid grid-cols-2'>
+      <div className='md:grid grid-cols-2'>
       <div>
       <CurrentWeather/>
       </div>  

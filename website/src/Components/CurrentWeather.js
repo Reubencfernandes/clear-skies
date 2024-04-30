@@ -7,7 +7,7 @@ const CurrentWeather = () => {
         <div className='bg-hm text-white rounded-3xl bg-cover bg-center bg-no-repeat m-4 font-body'>
             <div className='flex justify-between p-5'>
                 <div className='flex'>
-                    <WeatherIcon className='text-3xl wi-thermometer-exterior' iconId={200} name="owm" />
+                    <WeatherIcon className='text-3xl wi-thermometer-exterior' iconId={802} name="owm" />
                     <p className='pl-2 text-md'>Temperature</p>
                 </div>
                 <div>
