@@ -29,43 +29,67 @@ const Weather = () => {
   const [AQI, setAQI] = useState(" ")
   const [time, settime] = useState(" ")
   const [description, setdescription] = useState("")
-
+const [chart, setchart] = useState()
+const [forecastData, setforecast] = useState([])
   let lon = useParams().lon;
   let lat = useParams().lat;
   let name = useParams().name
-  useEffect(() => {
-    fetch(`http://localhost:10/find/${lat}/${lon}`).then(response => response.json()).then(data => {
-      console.log(data)
-      const date = new Date(data.dt * 1000);
-      const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
-      const day = date.getDate();
-      const hours = date.getHours();
-      const minutes = date.getMinutes();
+  const kelvinToCelsius = (kelvin) => {
+    return Math.trunc(kelvin - 273.15)
+  }
+  const FormatTime = (unixTimestamp, timezoneOffsetInSeconds) => {
+    const date = new Date(unixTimestamp * 1000)
+    const utc = date.getTime() + (date.getTimezoneOffset() * 60000)
+    const targetTime = new Date(utc + (timezoneOffsetInSeconds * 1000))
 
-      console.log(`${day} ${month}`)
-      setlocname(data.name)
-      setloclat(data.coord.lat)
-      setloclon(data.coord.lon)
-      setdescription(data.weather[0].description)
-      setdate(`${day} ${month}`)
-      settime(`${hours}:${minutes}`)
-      setflag(`${data.sys.country}`)
-      setsunrise(data.sys.sunrise)
-      setsunset(data.sys.sunset)
-      settemp(data.main.temp)
-      setfeelslike(data.main.feels_like)
-      sethumidity(data.main.humidity)
-      setvisibility(data.visibility)
-      setwindspeed(data.wind.speed)
-      setmintemp(data.main.temp_min)
-      setmaxtemp(data.main.temp_max)
-      setpressure(data.main.pressure)
-      fetch(`http://localhost:10/air/${lat}/${lon}`).then(response => response.json()).then(data => {
-        setAQI(data.list[0].main.aqi)
+    return targetTime.toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true })
+  }
+  const FormatMonth = (unixTimestamp, timezoneOffsetInSeconds) => {
+    const date = new Date(unixTimestamp * 1000)
+    const utc = date.getTime() + (date.getTimezoneOffset() * 60000)
+    const targetDate = new Date(utc + (timezoneOffsetInSeconds * 1000))
+    return targetDate.toLocaleString('en-US', {day: 'numeric', month: 'short'});
+  }
+  useEffect(() => {
+    Promise.all([
+        fetch(`http://localhost:10/find/${lat}/${lon}`).then(response => response.json()),
+        fetch(`http://localhost:10/forecast/${lat}/${lon}`).then(response => response.json()),
+        fetch(`http://localhost:10/air/${lat}/${lon}`).then(response => response.json())
+    ])
+    .then(([weatherData, forecastData, airQualityData]) => {
+        const date = new Date(weatherData.dt * 1000);
+        const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+        const day = date.getDate();
+        const hours = date.getHours();
+        const minutes = date.getMinutes();
+
+        setlocname(weatherData.name);
+        setloclat(weatherData.coord.lat);
+        setloclon(weatherData.coord.lon);
+        setdescription(weatherData.weather[0].description);
+        setdate(FormatMonth(weatherData.dt, weatherData.timezone));
+        settime(FormatTime(weatherData.dt, weatherData.timezone));
+        setflag(weatherData.sys.country);
+        setsunrise(FormatTime(weatherData.sys.sunrise, weatherData.timezone));
+        setsunset(FormatTime(weatherData.sys.sunset, weatherData.timezone));
+        settemp(kelvinToCelsius(weatherData.main.temp));
+        setfeelslike(kelvinToCelsius(weatherData.main.feels_like));
+        sethumidity(weatherData.main.humidity);
+        setvisibility((weatherData.visibility / 1000));
+        setwindspeed(weatherData.wind.speed);
+        setmintemp(kelvinToCelsius(weatherData.main.temp_min));
+        setmaxtemp(kelvinToCelsius(weatherData.main.temp_max));
+        setpressure(weatherData.main.pressure);
+        setchart(forecastData.processedData);
+        setforecast(forecastData);
+        setAQI(airQualityData.list[0].main.aqi);
+        fetch(`http://localhost:10/Update/${weatherData.name}/${weatherData.coord.lat}/${weatherData.coord.lon}/${weatherData.main.temp}/${weatherData.sys.country}/${weatherData.weather[0].description}`);
     })
-    fetch(`http://localhost:10/UpdateCount/${data.name}/${data.lat}/${data.lon}`)
-    })
-  }, [])
+    .catch(error => {
+        console.error('Error fetching data:', error);
+    });
+}, []);
+
 
   return (
     <div>
@@ -78,15 +102,15 @@ const Weather = () => {
           <Air AQI={AQI} />
         </div>
         <div>
-          <MinMax feelslike={feelslike} mintemp={mintemp} maxtemp={maxtemp}/>
-          <Sunrisesunset sunset={sunset} sunrise={sunrise}/>
+          <MinMax feelslike={feelslike} mintemp={mintemp} maxtemp={maxtemp} />
+          <Sunrisesunset sunset={sunset} sunrise={sunrise} />
         </div>
         <div>
           <Info humidity={humidity} windspeed={windspeed} pressure={pressure} visibility={visibility} />
         </div>
       </div>
-      <Chart />
-      <Forecast />
+      <Chart data={chart}/>
+      
       <Location />
     </div>
   )

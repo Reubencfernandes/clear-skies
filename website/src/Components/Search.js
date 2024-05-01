@@ -22,7 +22,7 @@ const Search = () => {
     .then(data => {
       if (data[0] && data[0].lat && data[0].lon) {
         console.log(data[0]);
-        fetch(`http://localhost:10/UpdateCount/${data[0].name}/${data[0].lat}/${data[0].lon}`)
+        fetch(`http://localhost:10/UpdateCount/${data[0].name}`)
         navigate(`/search/${data[0].lat}/${data[0].lon}/${data[0].name}`);
       } else {
         navigate('/NOTFOUND');

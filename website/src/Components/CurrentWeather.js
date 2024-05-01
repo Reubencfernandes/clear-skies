@@ -17,7 +17,7 @@ const CurrentWeather = (props) => {
             </div>
             <div className='p-2'>
                 <div className='flex p-1'>
-            <Flag country={props.country} />
+            <Flag className='text-7xl' country={props.flag} />
             <h1 className='font-bebas text-5xl pl-2'>{props.name}</h1>
                 </div>
             <p className='font-bebas ml-10 text-xl'> {props.lat}, {props.lon}</p>

@@ -16,6 +16,9 @@ const collection_structure = new Schema({
   Lat:{
     type:String,
   },
+  Country:{
+    type:String,
+  },
   Count: {
     type: Number,
     default: 0
