@@ -19,17 +19,18 @@ const Home = () => {
         });
   }, []);
   return (
-    <div className="mt-10 p-8 block xl:flex xl:items-center xl:justify-between">
-        <div className=' py-10 mt-10 xl:mx-6'>
-            <h1 className='font-head text-6xl py-2'>ClearSkies</h1>
-            <p className='my-1 xl:font-body text-xl xl:py-2'>Clear Skies helps you navigate the weather's impact on daily life, from planning outdoor activities to preparing for severe conditions. Access accurate, current weather updates for global locations easily.</p>
-            <Search/>
-            <p className='font-body py-1 text-base text-gray-600'>Recent Searches: {names}</p>
-        </div>
-        <div className='hidden xl:block xl:m-5'>
-         <img src='https://cdn.midjourney.com/8a583123-8c84-4b1a-92f2-4a57c3517da1/0_0.png' alt='main'/>
-        </div>
+    <div className="flex flex-col xl:flex-row items-center justify-between p-8">
+    <div className='flex-1 py-10 mt-10 xl:mx-6'>
+        <h1 className='font-head text-5xl xl:text-6xl py-2'>ClearSkies</h1>
+        <p className='my-1 text-lg xl:text-xl py-2'>Clear Skies helps you navigate the weather's impact on daily life, from planning outdoor activities to preparing for severe conditions. Access accurate, current weather updates for global locations easily.</p>
+        <Search/>
+        <p className='font-body py-1 text-sm xl:text-base text-gray-600'>Recent Searches: {names}</p>
     </div>
+    <div className='flex-1 hidden xl:block m-5'>
+        <img src='https://cdn.midjourney.com/8a583123-8c84-4b1a-92f2-4a57c3517da1/0_0.png' alt='main'/>
+    </div>
+</div>
+
   )
 }
 
