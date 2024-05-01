@@ -11,17 +11,14 @@ const Search = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form); 
-    fetch(`http://localhost:80/Get/${form}`)  
+    fetch(`https://clear-skies-production.up.railway.app/Get/${form}`)  
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       return response.json();
     }).then(data => {
-      console.log(data)
       if (data[0] && data[0].lat && data[0].lon) {
-        console.log(data[0]);
         navigate(`/search/${data[0].lat}/${data[0].lon}/${data[0].name}`);
       } else {
         navigate('/NOTFOUND');

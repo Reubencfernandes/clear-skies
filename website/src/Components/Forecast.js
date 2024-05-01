@@ -3,8 +3,6 @@ import 'weather-react-icons/lib/css/weather-icons.css';
 import { WeatherIcon } from 'weather-react-icons';
 
 const Forecast = (props) => {
-  console.log('Props info',props.info);
-
   if (!props.info) {
     return <h1 className='font-body text-3xl font-semibold ml-3'>Loading forecast info or info is not available...</h1>;
   }

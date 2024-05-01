@@ -1,11 +1,12 @@
 {
   "name": "clear-skies",
   "version": "1.0.0",
-  "description": "![app](image-1.png)",
+  "description": "Weather APP",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +16,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
+    "moment": "^2.30.1",
+    "moment-timezone": "^0.5.45",
     "mongoose": "^8.3.2",
     "node-cron": "^3.0.3",
     "node-fetch": "^3.3.2",

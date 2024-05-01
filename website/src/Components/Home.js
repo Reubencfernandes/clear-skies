@@ -4,7 +4,7 @@ import Search from './Search'
 const Home = () => {
   const [names, setNames] = useState("")
    useEffect( () => {
-    fetch("http://localhost:80/GetLocations")  
+    fetch("https://clear-skies-production.up.railway.app/GetLocations")  
         .then(response => response.json())  
         .then(data => {
           const locations = data; 
