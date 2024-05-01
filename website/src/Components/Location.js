@@ -5,7 +5,7 @@ const Location = () => {
   const [loc, setLoc] = useState([]);
   
   useEffect(() => {
-    fetch(`http://localhost:10/sort`)
+    fetch(`http://localhost:80/sort`)
       .then(response => response.json())
       .then(data => {
         setLoc(data);

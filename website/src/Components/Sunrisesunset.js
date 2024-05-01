@@ -8,7 +8,9 @@ const Sunrisesunset = (props) => {
            <div> <p>Sunset</p><p>{props.sunset}</p></div>
        </div>
        <div className="w-full bg-gray-200 rounded-full h-2.5 ">
-           <div className="bg-[#B04043] h-2.5 rounded-full w-20">
+       <div className="bg-[#B04043] h-2.5 rounded-full" style={{ width: `${props.percent}%` }}>
+
+
            </div>
    </div>
 </div>

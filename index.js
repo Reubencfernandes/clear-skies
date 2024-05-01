@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const cron = require('node-cron');
 const LocationData = require('./Database/Information')
 const express = require("express")
 const path = require('node:path')
@@ -8,7 +9,7 @@ const ChartFormat = require('./ChartFormat');
 require('dotenv').config()
 require('colors')
 const app = express();
-const PORT = 10
+const PORT = 80
 
 const url =
   `mongodb+srv://${process.env.MONGO}.v5huydu.mongodb.net/clearskies?retryWrites=true&w=majority`;
@@ -51,45 +52,32 @@ app.get("/air/:lat/:lon", (req, res) => {
       .catch(error => res.status(500).json({ error: "Error fetching data" }));  
 });
 
-app.get("/UpdateCount/:name", async (req, res) => {
-  try {
-    const result = await LocationData.findOneAndUpdate(
-      { Name: req.params.name },
-      { $inc: { Count: 1 } },
-      { new: true, upsert: true }
-    );
-    if (result) {
-      console.log({ message: "Count updated successfully", count: result.Count });
-    } else {
-      console.log({ message: "No document found and none was created" });
-    }
-  } catch (err) {
-    console.log({ message: "Error updating count", error: err });
-  }
-});
 app.get("/Update/:name/:lat/:lon/:temp/:flag/:description/", async (req, res) => {
   try {
-    const result = await LocationData.findOneAndUpdate({ Name: req.params.name },{ 
-        $set: {
+    const result = await LocationData.findOneAndUpdate(
+      { Name: req.params.name }, 
+      {
+        $inc: { Count: 1 }, 
+        $set: { 
           Climate_Info: req.params.description,
           Long: req.params.lon,
           Temperature: req.params.temp,
           Country: req.params.flag,
           Lat: req.params.lat
-           }
+        }
       },
-      { new: true, upsert: true }
+      { new: true, upsert: true } 
     );
+
     if (result) {
-      console.log({ message: "Location updated successfully".blue });
+      console.log("Location updated successfully".blue);
     } else {
-      console.log({ message: "No document found and none was created".red });
+      console.log("No document found and none was created".red);
     }
   } catch (err) {
     console.log({ message: "Error updating location", error: err });
   }
 });
-
 app.get("/Get/:id",(req,res)=>{
 fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${req.params.id}&appid=${process.env.KEY}`).then((list) => list.json()).then(data => {
   res.json(data)
@@ -124,4 +112,39 @@ app.get("/forecast/:lat/:lon", (req, res) => {
 app.use(express.static("build"));
 app.use((req, res, next) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
-});
+}); 
+// update data every 24 hrs
+cron.schedule('0 0 * * *', () => { 
+try {
+  const result = LocationData.find({}).sort({Count : -1}).limit(5).then((list) => {
+    list.forEach(async (index)=>{
+      try {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${index.Lat}&lon=${index.Long}&appid=${process.env.KEY}`)
+      .then(response => response.json()).then(async info => {
+        const result = await LocationData.findOneAndUpdate(
+          { Name:index.Name }, 
+          { 
+            $set: { 
+              Climate_Info: info.weather[0].description,
+              Temperature: info.main.temp,
+            }
+          },
+          { new: true, upsert: true } 
+        );
+    
+        if (result) {
+          console.log("24 hr Location updated successfully".blue);
+        } else {
+          console.log("No document found and none was created".red);
+        }
+      })
+      } catch (err) {
+        console.log({ message: "Error updating location", error: err });
+      }
+    })
+  })
+  
+} catch (err) {
+  console.log({ message: "Error updating location", error: err });
+}
+})

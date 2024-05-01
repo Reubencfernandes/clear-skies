@@ -12,17 +12,16 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(form); 
-    fetch(`http://localhost:10/Get/${form}`)  
+    fetch(`http://localhost:80/Get/${form}`)  
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       return response.json();
-    })
-    .then(data => {
+    }).then(data => {
+      console.log(data)
       if (data[0] && data[0].lat && data[0].lon) {
         console.log(data[0]);
-        fetch(`http://localhost:10/UpdateCount/${data[0].name}`)
         navigate(`/search/${data[0].lat}/${data[0].lon}/${data[0].name}`);
       } else {
         navigate('/NOTFOUND');
