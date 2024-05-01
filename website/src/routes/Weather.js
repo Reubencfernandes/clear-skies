@@ -30,7 +30,7 @@ const Weather = () => {
   const [time, settime] = useState(" ")
   const [description, setdescription] = useState("")
 const [chart, setchart] = useState()
-const [forecastData, setforecast] = useState([])
+const [forecastData, setforecastData] = useState([])
   let lon = useParams().lon;
   let lat = useParams().lat;
   let name = useParams().name
@@ -81,8 +81,9 @@ const [forecastData, setforecast] = useState([])
         setmaxtemp(kelvinToCelsius(weatherData.main.temp_max));
         setpressure(weatherData.main.pressure);
         setchart(forecastData.processedData);
-        setforecast(forecastData);
+        setforecastData(forecastData.forecast);
         setAQI(airQualityData.list[0].main.aqi);
+        console.log(forecastData)
         fetch(`http://localhost:10/Update/${weatherData.name}/${weatherData.coord.lat}/${weatherData.coord.lon}/${weatherData.main.temp}/${weatherData.sys.country}/${weatherData.weather[0].description}`);
     })
     .catch(error => {
@@ -110,7 +111,7 @@ const [forecastData, setforecast] = useState([])
         </div>
       </div>
       <Chart data={chart}/>
-      
+      <Forecast info={forecastData}/>
       <Location />
     </div>
   )
