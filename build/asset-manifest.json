@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6e6ec3da.css",
+    "main.js": "/static/js/main.a9c34ae4.js",
+    "static/js/453.2140c7f0.chunk.js": "/static/js/453.2140c7f0.chunk.js",
+    "static/media/airquality.png": "/static/media/airquality.1fa1e898014d272fa573.png",
+    "static/media/home.jpg": "/static/media/home.755d26a7c1f250b1d9ef.jpg",
+    "static/media/weathericons-regular-webfont.svg": "/static/media/weathericons-regular-webfont.1341a15172cec8dae06e.svg",
+    "static/media/weathericons-regular-webfont.eot": "/static/media/weathericons-regular-webfont.bb2ec001c20cf752f852.eot",
+    "static/media/weathericons-regular-webfont.ttf": "/static/media/weathericons-regular-webfont.0942d1e1c447d6ce3ffc.ttf",
+    "static/media/weathericons-regular-webfont.woff": "/static/media/weathericons-regular-webfont.371511ddba5fdac0538c.woff",
+    "static/media/weathericons-regular-webfont.woff2": "/static/media/weathericons-regular-webfont.e218aee6928fe3da9ed6.woff2",
+    "index.html": "/index.html",
+    "main.6e6ec3da.css.map": "/static/css/main.6e6ec3da.css.map",
+    "main.a9c34ae4.js.map": "/static/js/main.a9c34ae4.js.map",
+    "453.2140c7f0.chunk.js.map": "/static/js/453.2140c7f0.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6e6ec3da.css",
+    "static/js/main.a9c34ae4.js"
+  ]
+}
