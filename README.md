@@ -1,7 +1,6 @@
 
 # [Clear Skies v1.0](https://clear-skies-production.up.railway.app/)
 
-![Clear Skies Banner](path/to/banner-image.png)
 
 Clear Skies is a modern weather application providing real-time weather information, air quality indices, and detailed forecasts. Built with cutting-edge technologies, this web application delivers accurate weather data in a user-friendly interface.
 
@@ -20,7 +19,7 @@ Clear Skies is a modern weather application providing real-time weather informat
 - Responsive design for all devices
 - Location-based weather information
 
-![App Screenshot](path/to/screenshot.png)
+
 
 ## Live Demo
 
